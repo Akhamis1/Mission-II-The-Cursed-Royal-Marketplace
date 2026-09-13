@@ -1,0 +1,271 @@
+:root {
+  --ink: #25180f;
+  --paper: #f4e3b7;
+  --wine: #6d1825;
+  --gold: #c79b46;
+  --forest: #274635;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+
+body {
+  margin: 0;
+  color: var(--ink);
+  font-family: Georgia, serif;
+  background: #17120e;
+}
+
+a {
+  color: inherit;
+}
+
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 18px max(24px, calc((100% - 1100px) / 2));
+  color: #fff3d2;
+  border-bottom: 2px solid var(--gold);
+  background: #301d13;
+}
+
+.navbar div {
+  display: flex;
+  gap: 20px;
+}
+
+.brand {
+  color: #f1c968;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+
+.container,
+.form-page,
+.hero {
+  width: min(1100px, calc(100% - 32px));
+  margin: 40px auto;
+  padding: 34px;
+  background: var(--paper);
+  border: 4px double #8c642d;
+}
+
+.form-page,
+.narrow {
+  max-width: 760px;
+}
+
+
+.hero {
+  min-height: 65vh;
+  display: grid;
+  align-content: center;
+  text-align: center;
+}
+
+.hero h1,
+.page-header h1,
+.form-page h1,
+.artifact-detail h1 {
+  margin: 8px 0 18px;
+  font-size: clamp(2rem, 6vw, 4.5rem);
+}
+
+.hero p {
+  max-width: 680px;
+  margin: 0 auto 28px;
+  font-size: 1.15rem;
+  line-height: 1.7;
+}
+
+.eyebrow {
+  color: var(--wine);
+  font-weight: bold;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+
+.button,
+button {
+  display: inline-block;
+  width: max-content;
+  padding: 11px 17px;
+  color: white;
+  border: none;
+  background: var(--wine);
+  font: 700 1rem Georgia, serif;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.secondary {
+  background: var(--forest);
+}
+
+.danger {
+  background: #8b0000;
+}
+
+.link-button {
+  padding: 0;
+  color: #7b1721;
+  background: none;
+  font-size: 0.85rem;
+  text-decoration: underline;
+}
+
+
+#marketplace-button {
+  display: block;
+  width: fit-content;
+  margin: 30px auto;
+  text-align: center;
+}
+
+
+.page-header,
+.actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+}
+
+.actions {
+  justify-content: flex-start;
+  margin-top: 24px;
+}
+
+.actions form {
+  margin: 0;
+  padding: 0;
+  border: none;
+  background: none;
+}
+
+
+.artifact-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+}
+
+.artifact-card,
+.artifact-detail,
+.review {
+  padding: 22px;
+  border: 1px solid #9b7a43;
+  background: #fff3d3;
+}
+
+.artifact-symbol {
+  font-size: 3rem;
+}
+
+.artifact-symbol.large {
+  font-size: 5rem;
+}
+
+.artifact-card h2 {
+  margin: 8px 0;
+}
+
+.rarity {
+  display: inline-block;
+  margin: 12px 0 5px;
+  padding: 4px 8px;
+  color: white;
+  background: var(--forest);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+}
+
+.empty {
+  padding: 40px;
+  text-align: center;
+}
+
+
+.form-page form,
+.reviews > form {
+  display: grid;
+  gap: 16px;
+  padding: 22px;
+  border: 1px solid #9b7a43;
+  background: #fff3d3;
+}
+
+label {
+  display: grid;
+  gap: 7px;
+  font-weight: bold;
+}
+
+input,
+textarea,
+select {
+  width: 100%;
+  padding: 11px;
+  border: 1px solid #8f713e;
+  background: #fffaf0;
+  font: 1rem Georgia, serif;
+}
+
+textarea {
+  min-height: 110px;
+  resize: vertical;
+}
+
+
+.reviews {
+  margin-top: 28px;
+}
+
+.review {
+  margin-bottom: 12px;
+}
+
+#marketplace-logo {
+  display: block;
+  width: min(100%, 450px);
+  height: auto;
+  margin: 25px auto;
+  border-radius: 12px;
+  object-fit: contain;
+}
+
+#marketplace-button {
+  display: block;
+  width: fit-content;
+  margin: 30px auto 0;
+  text-align: center;
+}
+
+
+@media (max-width: 760px) {
+  .navbar,
+  .page-header {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .navbar div {
+    flex-wrap: wrap;
+  }
+
+  .artifact-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .container,
+  .form-page,
+  .hero {
+    padding: 22px;
+  }
+}

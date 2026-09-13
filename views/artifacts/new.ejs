@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add a Royal Artifact</title>
+    <link rel="stylesheet" href="/stylesheets/style.css">
+  </head>
+  <body>
+    <%- include('../partials/navbar.ejs') %>
+    <main class="form-page">
+      <p class="eyebrow">Royal registry</p>
+      <h1>Add an Artifact</h1>
+      <form action="/artifacts" method="POST">
+        <label>Name <input type="text" name="name" required></label>
+        <label>Category
+          <select name="category" required>
+            <option value="Weapon">Weapon</option><option value="Armor">Armor</option>
+            <option value="Potion">Potion</option><option value="Scroll">Scroll</option>
+            <option value="Treasure">Treasure</option><option value="Magical Item">Magical Item</option>
+          </select>
+        </label>
+        <label>Description <textarea name="description" required></textarea></label>
+        <label>Price in gold <input type="number" name="price" min="0" required></label>
+        <label>Rarity
+          <select name="rarity"><option>Common</option><option>Rare</option><option>Epic</option><option>Legendary</option></select>
+        </label>
+        <label>Artifact symbol <input type="text" name="image" placeholder="🗡️"></label>
+        <button type="submit">Register Artifact</button>
+      </form>
+    </main>
+  </body>
+</html>

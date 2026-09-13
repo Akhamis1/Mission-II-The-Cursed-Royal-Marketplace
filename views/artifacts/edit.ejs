@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit <%= artifact.name %></title>
+    <link rel="stylesheet" href="/stylesheets/style.css">
+  </head>
+  <body>
+    <%- include('../partials/navbar.ejs') %>
+    <main class="form-page">
+      <p class="eyebrow">Royal registry</p>
+      <h1>Edit <%= artifact.name %></h1>
+      <form action="/artifacts/<%= artifact._id %>?_method=DELETE" method="POST">
+        <label>Name <input type="text" name="name" value="<%= artifact.name %>" required></label>
+        <label>Category
+          <select name="category" required>
+            <% ['Weapon', 'Armor', 'Potion', 'Scroll', 'Treasure', 'Magical Item'].forEach((category) => { %>
+              <option value="<%= category %>" <%= artifact.category === category ? 'selected' : '' %>><%= category %></option>
+            <% }) %>
+          </select>
+        </label>
+        <label>Description <textarea name="description" required><%= artifact.description %></textarea></label>
+        <label>Price in gold <input type="number" name="price" min="0" value="<%= artifact.price %>" required></label>
+        <label>Rarity
+          <select name="rarity">
+            <% ['Common', 'Rare', 'Epic', 'Legendary'].forEach((rarity) => { %>
+              <option value="<%= rarity %>" <%= artifact.rarity === rarity ? 'selected' : '' %>><%= rarity %></option>
+            <% }) %>
+          </select>
+        </label>
+        <label>Artifact symbol <input type="text" name="image" value="<%= artifact.image %>"></label>
+        <button type="submit">Save Changes</button>
+      </form>
+    </main>
+  </body>
+</html>

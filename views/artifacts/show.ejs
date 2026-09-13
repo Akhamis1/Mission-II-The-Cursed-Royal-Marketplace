@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= artifact.name %></title>
+    <link rel="stylesheet" href="/stylesheets/style.css">
+  </head>
+  <body>
+    <%- include('../partials/navbar.ejs') %>
+    <main class="container narrow">
+      <article class="artifact-detail">
+        <div class="artifact-symbol large"><%= artifact.image || '🗡️' %></div>
+        <span class="rarity"><%= artifact.rarity %></span>
+        <h1><%= artifact.name %></h1>
+        <p><strong><%= artifact.category %></strong> · <%= artifact.price %> gold</p>
+        <p><%= artifact.description %></p>
+        <div class="actions">
+          <a class="button secondary" href="/artifacts/<%= artifact._id %>/edit">Edit</a>
+          <form action="/artifacts/<%= artifact._id %>?_method=DELETE" method="POST">
+            <button class="danger" type="submit">Delete</button>
+          </form>
+        </div>
+      </article>
+
+      <section class="reviews">
+        <h2>📜 Royal Reviews</h2>
+        <% artifact.reviews.forEach((review) => { %>
+          <article class="review">
+            <strong><%= '⭐'.repeat(review.rating) %></strong>
+            <p><%= review.message %></p>
+            <form action="/artifacts/<%= artifact._id %>/reviews/<%= review._id %>?_method=DELETE" method="POST">
+              <button class="link-button" type="submit">Remove review</button>
+            </form>
+          </article>
+        <% }) %>
+
+        <form action="/artifacts/<%= artifact._id %>/reviews" method="POST">
+          <input type="hidden" name="artifactId" value="<%= artifact._id %>">
+          <label>Review <textarea name="message" required></textarea></label>
+          <label>Rating
+            <select name="rating"><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option></select>
+          </label>
+          <button type="submit">Add Royal Review</button>
+        </form>
+      </section>
+    </main>
+  </body>
+</html>
